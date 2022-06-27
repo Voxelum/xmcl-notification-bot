@@ -1,6 +1,7 @@
 package xmcl;
 
 import com.microsoft.azure.functions.ExecutionContext;
+import com.microsoft.azure.functions.annotation.BindingName;
 import com.microsoft.azure.functions.annotation.BlobTrigger;
 import com.microsoft.azure.functions.annotation.FunctionName;
 import com.microsoft.azure.functions.annotation.StorageAccount;
@@ -28,10 +29,17 @@ public class Function {
             @BlobTrigger(
                     name = "version-released",
                     dataType = "string",
-                    path = "releases/VERSION",
-                    connection = "AzureWebJobsStorage")
+                    path = "releases/{name}",
+                    connection = "XMCL_STORAGE_CONNECTION")
                     String content,
+            @BindingName("name") String filename,
             final ExecutionContext context) {
+        if (!filename.equals("VERSION")) {
+            context.getLogger().info("非 VERSION 文件，掠过");
+            return;
+        }
+        context.getLogger().info("VERSION 文件改变，运行");
+
         Bot bot = BotFactory.INSTANCE.newBot(Integer.parseInt(System.getenv("QQ")), System.getenv("QQPWD"));
         bot.login();
 
