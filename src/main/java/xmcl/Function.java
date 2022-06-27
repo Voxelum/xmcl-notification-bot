@@ -27,7 +27,9 @@ public class Function {
     @FunctionName("release-trigger")
     public String trigger(
             @HttpTrigger(name = "release-trigger", methods = {
-                    HttpMethod.GET }, authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Optional<String>> request) {
+                    HttpMethod.GET }, authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Optional<String>> request,
+                    final ExecutionContext context) {
+        context.getLogger().info("HELLO");
         return "Hello";
     }
 
