@@ -66,12 +66,12 @@
                     <!-- function app name -->
                     <appName>${functionAppName}</appName>
                     <!-- function app resource group -->
-                    <resourceGroup>java-functions-group</resourceGroup>
+                    <resourceGroup>xmcl</resourceGroup>
                     <!-- function app service plan name -->
-                    <appServicePlanName>java-functions-app-service-plan</appServicePlanName>
+                    <appServicePlanName>ASP-xmcl-a031</appServicePlanName>
                     <!-- function app region-->
                     <!-- refers https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Functions:-Configuration-Details#supported-regions for all valid values -->
-                    <region>westus</region>
+                    <region>eastasia</region>
                     <!-- function pricingTier, default to be consumption if not specified -->
                     <!-- refers https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Functions:-Configuration-Details#supported-pricing-tiers for all valid values -->
                     <!-- <pricingTier></pricingTier> -->
